@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Catch me if you can!</title>
+</head>
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+
+<style>
+
+body{
+  background-image: url(https://64.media.tumblr.com/ffe2cedbcc34f7e4f18a2a56e7fb2f2e/tumblr_muqo4ar8kX1rnh763o3_250.jpg);
+  background-repeat: no-repeat;
+}
+
+img#emcee
+{
+    position: relative;
+    z-index: 2; 
+    margin: auto;
+    width: 3%;
+}
+
+</style>
+
+<body>
+<img  id="emcee" src="image/fly-rubbing-unscreen .gif">
+</body>
+
+
+<script>
+var caller = $("#emcee"),
+  box = $("#box");
+
+function foo() {
+  var btn = document.getElementById('emcee');
+  var randX = Math.floor(Math.random() * (window.innerWidth - btn.getBoundingClientRect().right));
+  var randY = Math.floor(Math.random() * (window.innerHeight - btn.getBoundingClientRect().top));
+  console.log([btn.getBoundingClientRect().top, btn.getBoundingClientRect().left]);
+  console.log([window.innerWidth, window.innerHeight]);
+  console.log([randX, randY]);
+  caller.stop().animate({
+    "left": randX + "px",
+    "top": randY + "px"
+  });
+
+}
+
+$(document).ready(function() {
+
+  caller.on('mouseenter', foo);
+  caller.on('click', function() {
+    alert('clicked!');
+  });
+
+});
+
+</script>
+
+
+</html>
+
