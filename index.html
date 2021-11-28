@@ -94,8 +94,8 @@ const caller5 = $("#emcee5");
 function randomMove(movingFly) {
   console.log(movingFly);  
   movingFly.touchstart(function() {
-    const dWidth = $(document).width() - 120, // 100 = image width
-            dHeight = $(document).height() - 120, // 100 = image height
+    const dWidth = $(document).width() - 180, // 100 = image width
+            dHeight = $(document).height() - 180, // 100 = image height
             nextX = Math.floor(Math.random() * dWidth),
             nextY = Math.floor(Math.random() * dHeight);
       console.log('dWidth', dWidth);
