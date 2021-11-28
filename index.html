@@ -40,10 +40,15 @@ img#emcee2{
 }
 
 img#emcee3{
-  margin-left:  20%;
-  margin-top: 20%;
-  -ms-transform: rotate(180deg); 
-  transform: rotate(180deg);
+  position: relative;
+    margin: auto;
+    width: 20%;
+}
+
+img#emcee4{
+  position: relative;
+    margin: auto;
+    width: 20%;
 }
 
 span { 
@@ -62,18 +67,14 @@ span {
 
 <body>
   <div class="main">
-<img id="emcee" src="image/fly-rubbing-unscreen .gif">
-<img id="emcee2" src="image/fly-rubbing-unscreen .gif">
-
-
-  <div id="div1" style="visibility: hidden"><img id="emcee2" src="image/fly-rubbing-unscreen .gif" width="20%"></div>
-  <div id="div2"  style="visibility: hidden"><img id="emcee3" src="image/fly-rubbing-unscreen .gif" width="20%"></div>
-  <div id="div3" style="visibility: hidden"><img src="image/fly-rubbing-unscreen .gif" width="20%"></div>
-
+  <img id="emcee" src="image/fly-rubbing-unscreen.gif">
+  <div id="div1" style="visibility: hidden"><img id="emcee2" src="image/fly-rubbing-unscreen.gif" width="20%"></div>
+  <div id="div2"  style="visibility: hidden"><img id="emcee3" src="image/fly-rubbing-unscreen.gif" width="20%"></div>
+  <div id="div3" style="visibility: hidden"><img id="emcee4" src="image/fly-rubbing-unscreen.gif" width="20%"></div>
 
 
 <div id="container">
-    <span id="random"><img src="image/fly-rubbing-unscreen .gif" width="30%;"></span>
+    <span id="random"><img id="emcee5" src="image/fly-rubbing-unscreen.gif" width="30%;"></span>
 </div>
 
 
@@ -84,31 +85,32 @@ span {
 
 
 <script>
-var caller = $("#emcee");
-var caller2 = $("#emcee2");
+const caller = $("#emcee");
+const caller2 = $("#emcee2");
+const caller3 = $("#emcee3");
+const caller4 = $("#emcee4");
+const caller5 = $("#emcee5");
 
 function randomMove(movingFly) {
   console.log(movingFly);  
-  var btn = document.getElementById(movingFly.selector.substring(1));
-  console.log(btn);  
-  var randX = Math.floor(Math.random() * (window.innerWidth - btn.getBoundingClientRect().right));
-  var randY = Math.floor(Math.random() * (window.innerHeight - btn.getBoundingClientRect().top));
-  console.log([btn.getBoundingClientRect().top, btn.getBoundingClientRect().left]);
-  console.log([window.innerWidth, window.innerHeight]);
-  console.log([randX, randY]);
-  movingFly.stop().animate({
-    "left": randX + "px",
-    "top": randY + "px"
+  movingFly.mousedown(function() {
+    const dWidth = $(document).width() - 120, // 100 = image width
+            dHeight = $(document).height() - 120, // 100 = image height
+            nextX = Math.floor(Math.random() * dWidth),
+            nextY = Math.floor(Math.random() * dHeight);
+      console.log('dWidth', dWidth);
+      console.log('dHeight', dHeight);
+
+      movingFly.animate({ left: nextX + 'px', top: nextY + 'px' });
   });
 }
 
 $(document).ready(function() {
-
-  caller.on('mouseenter', randomMove(caller));
-  caller2.on('mouseenter', randomMove(caller2));
-  caller.on('touchstart', randomMove(caller));
-  caller2.on('touchstart', randomMove(caller2));
-
+  caller.on('mousedown', randomMove(caller));
+  caller2.on('mousedown', randomMove(caller2));
+  caller3.on('mousedown', randomMove(caller3));
+  caller4.on('mousedown', randomMove(caller4));
+  caller5.on('mousedown', randomMove(caller5));
 });
 
 
