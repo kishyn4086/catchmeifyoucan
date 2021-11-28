@@ -84,35 +84,36 @@ span {
 
 
 <script>
-const caller = $("#emcee");
-const caller2 = $("#emcee2");
-const caller3 = $("#emcee3");
-const caller4 = $("#emcee4");
-const caller5 = $("#emcee5");
 
-function randomMove(movingFly) {
-  console.log(movingFly);  
-  movingFly.mouseover(function() {
-    const dWidth = $(document).width() - 120, // 100 = image width
-            dHeight = $(document).height() - 120, // 100 = image height
-            nextX = Math.floor(Math.random() * dWidth),
-            nextY = Math.floor(Math.random() * dHeight);
-      console.log('dWidth', dWidth);
-      console.log('dHeight', dHeight);
+var caller = $("#emcee");
+var caller2 = $("#emcee2");
+var caller3 = $("#emcee3");
+var caller4 = $("#emcee4");
+var caller5 = $("#emcee5");
 
-      movingFly.animate({ left: nextX + 'px', top: nextY + 'px' });
-  });
-}
 
 $(document).ready(function() {
-  caller.on('touchstart', randomMove(caller));
-  caller2.on('touchstart', randomMove(caller2));
-  caller3.on('touchstart', randomMove(caller3));
-  caller4.on('touchstart', randomMove(caller4));
-  caller5.on('touchstart', randomMove(caller5));
+  randomMove(caller);
+  randomMove(caller2);
+  randomMove(caller3);
+  randomMove(caller4);
+  randomMove(caller5);
 });
 
 
+function randomMove(movingFly) {
+  movingFly.mouseover(function() {
+    var dWidth = $(document).width() - 120, // 100 = image width
+            dHeight = $(document).height() - 120, // 100 = image height
+            nextX = Math.floor(Math.random() * dWidth),
+            nextY = Math.floor(Math.random() * dHeight);
+            
+      console.log(movingFly);  
+      console.log('nextX', nextX);
+      console.log('nextY', nextY);
+      movingFly.animate({ left: nextX + 'px', top: nextY + 'px' });
+  });
+}
 </script>
 
 <script type="text/javascript">
