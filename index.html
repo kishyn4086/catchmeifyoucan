@@ -89,7 +89,8 @@ var caller2 = $("#emcee2");
 
 function randomMove(movingFly) {
   console.log(movingFly);  
-  var btn = document.getElementById('emcee');
+  var btn = document.getElementById(movingFly.selector.substring(1));
+  console.log(btn);  
   var randX = Math.floor(Math.random() * (window.innerWidth - btn.getBoundingClientRect().right));
   var randY = Math.floor(Math.random() * (window.innerHeight - btn.getBoundingClientRect().top));
   console.log([btn.getBoundingClientRect().top, btn.getBoundingClientRect().left]);
@@ -99,7 +100,6 @@ function randomMove(movingFly) {
     "left": randX + "px",
     "top": randY + "px"
   });
-
 }
 
 $(document).ready(function() {
